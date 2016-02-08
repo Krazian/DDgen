@@ -43,7 +43,7 @@ app.get("/",function(req,res){
 			selection[6]=pickSomething(1,selection[6],",")
 			selection[7]=pickSomething(1,selection[7],",")
 			selection[8]=pickSomething(1,selection[8],",")
-
+			
 			res.render('index.ejs',{chosen:selection})
 		})
 	})
