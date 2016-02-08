@@ -12,14 +12,11 @@ app.set('view_engine','ejs');
 
 //single page only need
 app.get("/",function(req,res){
-	res.render('index.ejs');
-	db.all('SELECT * FROM races'),function(err,race){
-		if (err) {
-			console.log(err)
-		} else {
-			console.log(race)
-		}
-	}
+	// res.render('index.ejs',{title:"Hello, World!"})
+	db.all('SELECT * FROM races',function(err,race){
+			randoRace = race[Math.floor(Math.random()*14)]
+			res.render("index.ejs",{races:randoRace})
+		})
 })
 
 app.listen(3000, function(){
