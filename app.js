@@ -10,10 +10,10 @@ app.use(urlencodedBodyParser);
 app.use(express.static('public'));
 app.set('view_engine','ejs');
 
-var pickSomething = function(howMany,fromWhere,byWhat){
+var pickSomething = function(howMany,fromWhere,splitByWhat){
 	if (howMany > 1){
 		var chosenOnes=[]
-		var pick=fromWhere.split(byWhat)
+		var pick=fromWhere.split(splitByWhat)
 		for (var i = 0; i < howMany; i++){
 			fromWhere=pick[Math.floor(Math.random() * pick.length)]
 			chosenOnes.push(fromWhere)
@@ -21,7 +21,7 @@ var pickSomething = function(howMany,fromWhere,byWhat){
 			}
 		return chosenOnes
 	} else {
-		var pick=fromWhere.split(byWhat)
+		var pick=fromWhere.split(splitByWhat)
 		fromWhere=pick[Math.floor(Math.random() * pick.length)]
 		return fromWhere
 	}
@@ -43,7 +43,15 @@ app.get("/",function(req,res){
 			selection[6]=pickSomething(1,selection[6],",")
 			selection[7]=pickSomething(1,selection[7],",")
 			selection[8]=pickSomething(1,selection[8],",")
-			
+			var gear = selection[18].split(";")
+			var chosenGear = []
+			gear.forEach(function(options){
+				var singleItem = options.split(",")
+				chosenGear.push(singleItem[Math.floor(Math.random()*singleItem.length)])
+			})
+			selection[18] = chosenGear;
+
+
 			res.render('index.ejs',{chosen:selection})
 		})
 	})
