@@ -27,13 +27,13 @@ var pickSomething = function(howMany,fromWhere,splitByWhat){
 	}
 }
 
-//single page only need
 app.get("/",function(req,res){
 	db.all('SELECT * FROM races ORDER BY RANDOM() LIMIT 1',function(err,race){
 		db.all('SELECT * FROM classes ORDER BY RANDOM() LIMIT 1',function(err,job){
 			// res.render("index.ejs",{races:race[0],jobs:job[0]})
 			var selection=[]
 			for (var raceChar in race[0]){
+				console.log("The "+raceChar+"is "+race[0][raceChar])
 				selection.push(race[0][raceChar])
 			}
 			for (var jobChar in job[0]){
