@@ -5,54 +5,48 @@ var db = new sql.Database('dungeonsanddragons.db');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
 var urlencodedBodyParser = bodyParser.urlencoded({extended: false});
+var func = require('functions');
+var functions = new func()
+var attr = require('attributes')
 
 app.use(urlencodedBodyParser);
 app.use(express.static('public'));
 app.set('view_engine','ejs');
 
-var pickSomething = function(howMany,fromWhere,splitByWhat){
-	if (howMany > 1){
-		var chosenOnes=[]
-		var pick=fromWhere.split(splitByWhat)
-		for (var i = 0; i < howMany; i++){
-			fromWhere=pick[Math.floor(Math.random() * pick.length)]
-			chosenOnes.push(fromWhere)
-			pick.splice(pick.indexOf(fromWhere),1)
-			}
-		return chosenOnes
-	} else {
-		var pick=fromWhere.split(splitByWhat)
-		fromWhere=pick[Math.floor(Math.random() * pick.length)]
-		return fromWhere
-	}
-}
-
 app.get("/",function(req,res){
+	var stats = [];
+	for (var i = 0; i < 7; i++){
+		var number = functions.getStats()
+		stats.push({score: number,modifier:functions.modifiers(number)})
+		}
+		stats.sort(function (a, b) {
+	  if (a.score > b.score) {
+	    return 1;
+	  }
+	  if (a.score < b.score) {
+	    return -1;
+	  }
+	  return 0;
+	}).shift()
+
+	var abilityScores = new attr(functions.shuffle(stats))
+
 	db.all('SELECT * FROM races ORDER BY RANDOM() LIMIT 1',function(err,race){
 		db.all('SELECT * FROM classes ORDER BY RANDOM() LIMIT 1',function(err,job){
-			// res.render("index.ejs",{races:race[0],jobs:job[0]})
-			var selection=[]
-			for (var raceChar in race[0]){
-				console.log("The "+raceChar+"is "+race[0][raceChar])
-				selection.push(race[0][raceChar])
-			}
-			for (var jobChar in job[0]){
-				selection.push(job[0][jobChar])
-			}
+			race[0].male_name = functions.pickSomething(1,race[0].male_name,",")
+			race[0].female_name = functions.pickSomething(1,race[0].female_name,",")
+			race[0].clan_or_family_name = functions.pickSomething(1,race[0].clan_or_family_name,",")
 
-			selection[6]=pickSomething(1,selection[6],",")
-			selection[7]=pickSomething(1,selection[7],",")
-			selection[8]=pickSomething(1,selection[8],",")
-			var gear = selection[18].split(";")
 			var chosenGear = []
-			gear.forEach(function(options){
+			job[0].starting_equipment.split(";").forEach(function(options){
 				var singleItem = options.split(",")
 				chosenGear.push(singleItem[Math.floor(Math.random()*singleItem.length)])
 			})
-			selection[18] = chosenGear;
+			job[0].starting_equipment = chosenGear;
 
+			job[0].skills = functions.pickSomething(job[0].choose_skills,job[0].skills,",")
 
-			res.render('index.ejs',{chosen:selection})
+			res.render("index.ejs",{race:race[0],job:job[0],stat:abilityScores})
 		})
 	})
 })
