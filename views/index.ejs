@@ -24,7 +24,7 @@
 
 		Your class is a <%= job.class %>.<br/><br/>
 		Your hit die is <%= job.hit_dice %>.<br/><br/>
-		You start with <%= job.hp %> hp.<br/><br/>
+		You start with <%= parseInt(job.hp) + parseInt(stat.Constitution.modifier) %> hp.<br/><br/>
 		You can wear <%= job.armor_proficiencies %>.<br/><br/>
 		You can wield <%= job.weapon_proficiencies %>.<br/><br/>
 		You can use <%= job.tool_proficiencies %>.<br/><br/>
