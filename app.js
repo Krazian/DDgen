@@ -44,10 +44,14 @@ app.get("/",function(req,res){
 			});
 			job[0].starting_equipment = chosenGear;
 			job[0].skills = functions.pickSomething(job[0].choose_skills,job[0].skills,",");
-			res.render("index.ejs",{race:race[0],job:job[0],stat:abilityScores});
+			res.render("sheet.ejs",{race:race[0],job:job[0],stat:abilityScores});
 		});
 	});
 });
+
+app.get("/sheet",function(req,res){
+	res.render("sheet.ejs")
+})
 
 app.listen(3000, function(){
 	console.log('Roll for initiative!');

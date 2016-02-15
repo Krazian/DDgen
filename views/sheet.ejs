@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>D&amp;D 5e Character Generator</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link rel="stylesheet" href="custom-f6/css/app.css">
+	<link rel="stylesheet" href="custom-f6/css/foundation.css">
+	<link rel="stylesheet" href="custom-f6/css/foundation-flex.css">
+	<link href='https://fonts.googleapis.com/css?family=Tulpen+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="row section">
+		<h4 class="large-6 medium-6 small-6 columns">NAME</h4>
+		<div class="large-6 medium-6 small-6 row">
+			<h6 class="large-12 medium-12 small-12 columns" id="class-bg-player">CLASS AND LEVEL   BACKGROUND   PLAYER NAME</h6>
+			<h6 class="large-12 medium- small-12 columns" id="race-align-exp">RACE   ALIGNMENT   EXPERIENCE POINTS</h6>
+		</div>
+	</div>
+	<br/>
+	<div class="row">
+		<div class="large-4 medium-4 small-4 row section" style="margin-right:16px">
+			<div class="large-5 medium-5 small-5 columns">
+				<div class="large-12 medium-12 small-12 columns stats section">
+					<p class="score">Strength<br/><%=stat.Strength.score %></p>
+					<p class="mod"><%=stat.Strength.modifier %></p>
+				</div><br/>
+				<div class="large-12 medium-12 small-12 columns stats section">
+					<p class="score">Dexterity<br/><%=stat.Dexterity.score %></p>
+					<p class="mod"><%=stat.Dexterity.modifier %></p>
+				</div><br/>
+				<div class="large-12 medium-12 small-12 columns stats section">
+					<p class="score">Constitution<br/><%=stat.Constitution.score %></p>
+					<p class="mod"><%=stat.Constitution.modifier %></p>
+				</div><br/>
+				<div class="large-12 medium-12 small-12 columns stats section">
+					<p class="score">Intelligence<br/><%=stat.Intelligence.score %></p>
+					<p class="mod"><%=stat.Intelligence.modifier %></p>
+				</div><br/>
+				<div class="large-12 medium-12 small-12 columns stats section">
+					<p class="score">Wisdom<br/><%=stat.Wisdom.score %></p>
+					<p class="mod"><%=stat.Wisdom.modifier %></p>
+				</div><br/>
+				<div class="large-12 medium-12 small-12 columns stats section">
+					<p class="score">Charisma<br/><%=stat.Charisma.score %></p>
+					<p class="mod"><%=stat.Charisma.modifier %></p>
+				</div>
+			</div>
+			<p class="large-7 medium-7 small-7 columns skills">
+				Inspiration <br/>
+				Proficiency Bonus
+				<br/><br/>
+				<input type="radio" name="saving_throw" value="Strength"> _____ Strength<br/>
+				<input type="radio" name="saving_throw" value="Dexterity"> _____ Dexterity<br/>
+				<input type="radio" name="saving_throw" value="Constitution"> _____ Constitution<br/>
+				<input type="radio" name="saving_throw" value="Intelligence"> _____ Intelligence<br/>
+				<input type="radio" name="saving_throw" value="Wisdom"> _____ Wisdom<br/>
+				<input type="radio" name="saving_throw" value="Charisma"> _____ Charisma
+				<br/><br/>
+				<input type="radio" name="skill" value="Acrobatics"> _____ Acrobatics (Dex)<br/>
+				<input type="radio" name="skill" value="Animal Handling"> _____ Animal Handling (Wis)<br/>
+				<input type="radio" name="skill" value="Arcana"> _____ Arcana (Int)<br/>
+				<input type="radio" name="skill" value="Atheltics"> _____ Atheltics (Str)<br/>
+				<input type="radio" name="skill" value="Deception"> _____ Deception (Cha)<br/>
+				<input type="radio" name="skill" value="History"> _____ History (Int)<br/>
+				<input type="radio" name="skill" value="Insight"> _____ Insight (Wis)<br/>
+				<input type="radio" name="skill" value="Intimidation"> _____ Intimidation (Cha)<br/>
+				<input type="radio" name="skill" value="Investigation"> _____ Investigation (Int)<br/>
+				<input type="radio" name="skill" value="Medicine"> _____ Medicine (Wis)<br/>
+				<input type="radio" name="skill" value="Nature"> _____ Nature (Int)<br/>
+				<input type="radio" name="skill" value="Perception"> _____ Perception (Wis)<br/>
+				<input type="radio" name="skill" value="Performace"> _____ Performace (Cha)<br/>
+				<input type="radio" name="skill" value="Persuasion"> _____ Persuasion (Cha)<br/>
+				<input type="radio" name="skill" value="Religion"> _____ Religion (Int)<br/>
+				<input type="radio" name="skill" value="Sleight of Hand"> _____ Sleight of Hand (Dex)<br/>
+				<input type="radio" name="skill" value="Stealth"> _____ Stealth (Dex)<br/>
+				<input type="radio" name="skill" value="Survival"> _____ Survival (Wis)<br/>
+			</p>
+			<p class="large-12 medium-12 small-12 section">Passive Perception</p>
+			<p class="large-12 medium-12 small-12 section">Other Proficiences &amp; Languages</p>
+		</div>
+		<div class="large-4 medium-4 small-4 row section" style="margin-right:16px">
+			<p class="large-4 medium-4 small-4 columns section">Armor Class</p>
+			<p class="large-4 medium-4 small-4 columns section">Initiative</p>
+			<p class="large-4 medium-4 small-4 columns section">Speed</p>
+			<p class="large-12 medium-12 small-12 columns section">Current Hit Points</p>
+			<p class="large-6 medium-6 small-6 columns section">Hit Dice</p>
+			<p class="large-6 medium-6 small-6 columns section">
+				Successes <input type="radio"> <input type="radio"> <input type="radio"><br/>
+				Failures <input type="radio"> <input type="radio"> <input type="radio"><br/>
+				Death Saves</p>
+		</div>
+		<div class="large-3 medium-3 small-3 row section" style="margin-right:16px">
+			<h3 class="large-12 medium-12 small-12 columns">TEST2</h3>
+		</div>
+</div>
+	<script src="custom-f6/js/vendor/jquery.min.js"></script>
+	<script src="custom-f6/js/vendor/what-input.min.js"></script>
+	<script src="custom-f6/js/foundation.js"></script>
+	<script src="custom-f6/js/app.js"></script>
+</body>
+</html>
