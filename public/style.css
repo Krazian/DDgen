@@ -3,17 +3,18 @@ body{
 	font-size: 25px;
 	margin: auto 20px;
   padding: 0px;
-  max-width: 670px; /* width: 7in; */
+ /* max-width: 670px;*/ /* width: 7in; */
   max-height: 900px; /* or height: 9.5in; */
   clear: both;
   page-break-after: always;
 }
 
-h3, h4, h6{
+h1, h2, h3, h4, h6{
 	font-family: 'Tulpen One', cursive;
 }
 
 .section{
+	padding:5px;
 	border-style: solid;
 	border-width: 2px;
 }
@@ -34,8 +35,14 @@ h3, h4, h6{
 	font-size: 18px;
 }
 
-#class-bg-player{
+.weapon{
+	background-color: red;
 }
 
-#race-align-exp{
+#left-half{
+	text-align: left;
+}
+
+#right-half{
+	text-align: right; 
 }

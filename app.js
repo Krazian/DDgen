@@ -14,6 +14,10 @@ app.use(express.static('public'));
 app.set('view_engine','ejs');
 
 app.get("/",function(req,res){
+	res.render("index.ejs")
+})
+
+app.get("/basic",function(req,res){
 	var stats = [];
 	for (var i = 0; i < 7; i++){
 		var number = functions.getStats();
@@ -44,13 +48,13 @@ app.get("/",function(req,res){
 			});
 			job[0].starting_equipment = chosenGear;
 			job[0].skills = functions.pickSomething(job[0].choose_skills,job[0].skills,",");
-			res.render("sheet.ejs",{race:race[0],job:job[0],stat:abilityScores});
+			res.render("basic.ejs",{race:race[0],job:job[0],stat:abilityScores});
 		});
 	});
 });
 
-app.get("/sheet",function(req,res){
-	res.render("sheet.ejs")
+app.get("/spells",function(req,res){
+	res.render("spells.ejs")
 })
 
 app.listen(3000, function(){

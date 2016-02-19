@@ -11,15 +11,20 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<!-- Header Start-->
 	<div class="row section">
-		<h4 class="large-6 medium-6 small-6 columns">NAME</h4>
-		<div class="large-6 medium-6 small-6 row">
-			<h6 class="large-12 medium-12 small-12 columns" id="class-bg-player">CLASS AND LEVEL   BACKGROUND   PLAYER NAME</h6>
-			<h6 class="large-12 medium- small-12 columns" id="race-align-exp">RACE   ALIGNMENT   EXPERIENCE POINTS</h6>
+		<h2 class="large-6 medium-6 small-6 columns" id="left-half"><%= race.male_name %><%= race.clan_or_family_name %></h2>
+		<div class="large-6 medium-6 small-6 columns">
+			<h4 class="large-12 medium-12 small-12 columns" id="right-half">
+				Level 1 <%= job.class %>  /  BACKGROUND  /  PLAYER NAME
+				<br/><%= race.race %>  /  ALIGNMENT  /  EXPERIENCE POINTS</h4>
 		</div>
 	</div>
-	<br/>
+
+<br/>
+	<!-- Header End -->
 	<div class="row">
+	<!-- First Column Start -->
 		<div class="large-4 medium-4 small-4 row section" style="margin-right:16px">
 			<div class="large-5 medium-5 small-5 columns">
 				<div class="large-12 medium-12 small-12 columns stats section">
@@ -77,9 +82,11 @@
 				<input type="radio" name="skill" value="Stealth"> _____ Stealth (Dex)<br/>
 				<input type="radio" name="skill" value="Survival"> _____ Survival (Wis)<br/>
 			</p>
-			<p class="large-12 medium-12 small-12 section">Passive Perception</p>
-			<p class="large-12 medium-12 small-12 section">Other Proficiences &amp; Languages</p>
+			<p class="large-12 medium-12 small-12 columns section">Passive Perception</p>
+			<p class="large-12 medium-12 small-12 columns section">Other Proficiences &amp; Languages</p>
 		</div>
+		<!-- First Column End -->
+		<!-- Second Column Start -->
 		<div class="large-4 medium-4 small-4 row section" style="margin-right:16px">
 			<p class="large-4 medium-4 small-4 columns section">Armor Class</p>
 			<p class="large-4 medium-4 small-4 columns section">Initiative</p>
@@ -90,10 +97,23 @@
 				Successes <input type="radio"> <input type="radio"> <input type="radio"><br/>
 				Failures <input type="radio"> <input type="radio"> <input type="radio"><br/>
 				Death Saves</p>
+			<div class="large-12 medium-12 small-12 columns section">
+				Attacks &amp; Spellcasting
+			</div>
+			<div class="large-12 medium-12 small-12 columns section">
+				Equipment
+			</div>
 		</div>
+		<!-- Second Column End -->
+		<!-- Third Column Start -->
 		<div class="large-3 medium-3 small-3 row section" style="margin-right:16px">
-			<h3 class="large-12 medium-12 small-12 columns">TEST2</h3>
+			<p class="large-12 medium-12 small-12 columns section">Personality Traits</p>
+			<p class="large-12 medium-12 small-12 columns section">Ideals</p>
+			<p class="large-12 medium-12 small-12 columns section">Bonds</p>
+			<p class="large-12 medium-12 small-12 columns section">Flaws</p>
+			<p class="large-12 medium-12 small-12 columns">Features &amp; Traits</p>
 		</div>
+		<!-- Third Column End -->
 </div>
 	<script src="custom-f6/js/vendor/jquery.min.js"></script>
 	<script src="custom-f6/js/vendor/what-input.min.js"></script>
