@@ -14,33 +14,37 @@ app.use(express.static('public'));
 app.set('view_engine','ejs');
 
 app.get("/",function(req,res){
-	res.render("index.ejs")
-})
+	res.render("index.ejs");
+});
 
 app.get("/basic",function(req,res){
+	// GETS STATS FROM EXPORT MODULE
 	var stats = [];
 	for (var i = 0; i < 7; i++){
 		var number = functions.getStats();
 		stats.push({score: number,modifier:functions.modifiers(number)});
 		}
 		stats.sort(function (a, b) {
-	  if (a.score > b.score) {
-	    return 1;
-	  }
-	  if (a.score < b.score) {
-	    return -1;
-	  }
-	  return 0;
-	}).shift();
+			if (a.score > b.score) {
+				return 1;
+			}
+			if (a.score < b.score) {
+				return -1;
+			}
+			return 0;
+		}).shift();
 
+	// RANDOMLY ASSIGN STATS
 	var abilityScores = new attr(functions.shuffle(stats));
 
+	//RANDOMLY SELECT A RACE AND CLASS
 	db.all('SELECT * FROM races ORDER BY RANDOM() LIMIT 1',function(err,race){
 		db.all('SELECT * FROM classes ORDER BY RANDOM() LIMIT 1',function(err,job){
 			race[0].male_name = functions.pickSomething(1,race[0].male_name,",");
 			race[0].female_name = functions.pickSomething(1,race[0].female_name,",");
 			race[0].clan_or_family_name = functions.pickSomething(1,race[0].clan_or_family_name,",");
 
+			//RANDOMLY SELECT STARTING EQUIPMENT
 			var chosenGear = [];
 			job[0].starting_equipment.split(";").forEach(function(options){
 				var singleItem = options.split(",");
@@ -54,9 +58,9 @@ app.get("/basic",function(req,res){
 });
 
 app.get("/spells",function(req,res){
-	res.render("spells.ejs")
-})
+	res.render("spells.ejs");
+});
 
-app.listen(3000, function(){
+app.listen(4000, function(){
 	console.log('Roll for initiative!');
 });
