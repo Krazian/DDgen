@@ -32,6 +32,7 @@ app.get("/basic",function(req,res){
 		db.all('SELECT * FROM classes ORDER BY RANDOM() LIMIT 1',function(err,job){
 			// GETS STATS FROM EXPORT MODULE
 			var stats = [];
+			debug("stop")
 			for (var i = 0; i < 7; i++){
 				var number = functions.getStats();
 				stats.push({score: number,modifier:functions.modifiers(number)});
