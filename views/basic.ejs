@@ -56,31 +56,31 @@
 				Inspiration <br/>
 				Proficiency Bonus
 				<br/><br/>
-				<input type="radio" value="Strength"> _____ Strength<br/>
-				<input type="radio" value="Dexterity"> _____ Dexterity<br/>
-				<input type="radio" value="Constitution"> _____ Constitution<br/>
-				<input type="radio" value="Intelligence"> _____ Intelligence<br/>
-				<input type="radio" value="Wisdom"> _____ Wisdom<br/>
-				<input type="radio" value="Charisma"> _____ Charisma
+				<input type="radio" name="Strength" value="Strength"> <u>  <%= stat.Strength.modifier %>  </u> Strength<br/>
+				<input type="radio" name="Dexterity" value="Dexterity"> <u>  <%= stat.Dexterity.modifier %>  </u> Dexterity<br/>
+				<input type="radio" name="Constitution" value="Constitution"> <u>  <%= stat.Constitution.modifier %>  </u> Constitution<br/>
+				<input type="radio" name="Intelligence" value="Intelligence"> <u>  <%= stat.Intelligence.modifier %>  </u> Intelligence<br/>
+				<input type="radio" name="Wisdom" value="Wisdom"> <u>  <%= stat.Wisdom.modifier %>  </u> Wisdom<br/>
+				<input type="radio" name="Charisma" value="Charisma"> <u>  <%= stat.Charisma.modifier %>  </u> Charisma
 				<br/><br/>
-				<input type="radio" value="Acrobatics"> _____ Acrobatics (Dex)<br/>
-				<input type="radio" value="Animal Handling"> _____ Animal Handling (Wis)<br/>
-				<input type="radio" value="Arcana"> _____ Arcana (Int)<br/>
-				<input type="radio" value="Atheltics"> _____ Atheltics (Str)<br/>
-				<input type="radio" value="Deception"> _____ Deception (Cha)<br/>
-				<input type="radio" value="History"> _____ History (Int)<br/>
-				<input type="radio" value="Insight"> _____ Insight (Wis)<br/>
-				<input type="radio" value="Intimidation"> _____ Intimidation (Cha)<br/>
-				<input type="radio" value="Investigation"> _____ Investigation (Int)<br/>
-				<input type="radio" value="Medicine"> _____ Medicine (Wis)<br/>
-				<input type="radio" value="Nature"> _____ Nature (Int)<br/>
-				<input type="radio" value="Perception"> _____ Perception (Wis)<br/>
-				<input type="radio" value="Performace"> _____ Performace (Cha)<br/>
-				<input type="radio" value="Persuasion"> _____ Persuasion (Cha)<br/>
-				<input type="radio" value="Religion"> _____ Religion (Int)<br/>
-				<input type="radio" value="Sleight of Hand"> _____ Sleight of Hand (Dex)<br/>
-				<input type="radio" value="Stealth"> _____ Stealth (Dex)<br/>
-				<input type="radio" value="Survival"> _____ Survival (Wis)<br/>
+				<input type="radio" name="Acrobatics" value="Acrobatics"> <u>  <%= stat.Dexterity.modifier %>  </u> Acrobatics (Dex)<br/>
+				<input type="radio" name="Animal Handling" value="Animal Handling"> <u>  <%= stat.Wisdom.modifier %>  </u> Animal Handling (Wis)<br/>
+				<input type="radio" name="Arcana" value="Arcana"> <u>  <%= stat.Intelligence.modifier %>  </u> Arcana (Int)<br/>
+				<input type="radio" name="Atheltics" value="Atheltics"> <u>  <%= stat.Strength.modifier %>  </u> Atheltics (Str)<br/>
+				<input type="radio" name="Deception" value="Deception"> <u>  <%= stat.Charisma.modifier %>  </u> Deception (Cha)<br/>
+				<input type="radio" name="History" value="History"> <u>  <%= stat.Intelligence.modifier %>  </u> History (Int)<br/>
+				<input type="radio" name="Insight" value="Insight"> <u>  <%= stat.Wisdom.modifier %>  </u> Insight (Wis)<br/>
+				<input type="radio" name="Intimidation" value="Intimidation"> <u>  <%= stat.Charisma.modifier %>  </u> Intimidation (Cha)<br/>
+				<input type="radio" name="Investigation" value="Investigation"> <u>  <%= stat.Intelligence.modifier %>  </u> Investigation (Int)<br/>
+				<input type="radio" name="Medicine" value="Medicine"> <u>  <%= stat.Wisdom.modifier %>  </u> Medicine (Wis)<br/>
+				<input type="radio" name="Nature" value="Nature"> <u>  <%= stat.Intelligence.modifier %>  </u> Nature (Int)<br/>
+				<input type="radio" name="Perception" value="Perception"> <u>  <%= stat.Wisdom.modifier %>  </u> Perception (Wis)<br/>
+				<input type="radio" name="Performace" value="Performace"> <u>  <%= stat.Charisma.modifier %>  </u> Performace (Cha)<br/>
+				<input type="radio" name="Persuasion" value="Persuasion"> <u>  <%= stat.Charisma.modifier %>  </u> Persuasion (Cha)<br/>
+				<input type="radio" name="Religion" value="Religion"> <u>  <%= stat.Intelligence.modifier %>  </u> Religion (Int)<br/>
+				<input type="radio" name="Sleight of Hand" value="Sleight of Hand"> <u>  <%= stat.Dexterity.modifier %>  </u> Sleight of Hand (Dex)<br/>
+				<input type="radio" name="Stealth" value="Stealth"> <u>  <%= stat.Dexterity.modifier %>  </u> Stealth (Dex)<br/>
+				<input type="radio" name="Survival" value="Survival"> <u>  <%= stat.Wisdom.modifier %>  </u> Survival (Wis)<br/>
 			</p>
 			<p class="large-12 medium-12 small-12 columns section">Passive Perception</p>
 			<p class="large-12 medium-12 small-12 columns section">Other Proficiences &amp; Languages</p>
@@ -89,10 +89,10 @@
 		<!-- Second Column Start -->
 		<div class="large-4 medium-4 small-4 row section" style="margin-right:16px">
 			<p class="large-4 medium-4 small-4 columns section">Armor Class</p>
-			<p class="large-4 medium-4 small-4 columns section">Initiative</p>
-			<p class="large-4 medium-4 small-4 columns section">Speed</p>
-			<p class="large-12 medium-12 small-12 columns section">Current Hit Points</p>
-			<p class="large-6 medium-6 small-6 columns section">Hit Dice</p>
+			<p class="large-4 medium-4 small-4 columns section">Initiative<br> <%= stat.Dexterity.modifier %></p>
+			<p class="large-4 medium-4 small-4 columns section">Speed<br><%= race.speed %></p>
+			<p class="large-12 medium-12 small-12 columns section">Current Hit Points<br><%= job.hp + stat.Constitution.modifier %></p>
+			<p class="large-6 medium-6 small-6 columns section">Hit Dice<br><%= job.hit_dice %></p>
 			<p class="large-6 medium-6 small-6 columns section">
 				Successes <input type="radio"> <input type="radio"> <input type="radio"><br/>
 				Failures <input type="radio"> <input type="radio"> <input type="radio"><br/>
