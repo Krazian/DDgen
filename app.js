@@ -8,7 +8,7 @@ var urlencodedBodyParser = bodyParser.urlencoded({extended: false});
 var func = require('functions');
 var functions = new func();
 var attr = require('attributes');
-
+// test
 app.use(urlencodedBodyParser);
 app.use(express.static('public'));
 app.set('view_engine','ejs');
