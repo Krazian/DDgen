@@ -6,36 +6,7 @@
 </head>
 <body>
 	<p>
-		Strength: <%= stat.Strength.score %> / <%= stat.Strength.modifier %> <br/><br/>
-		Dexterity: <%= stat.Dexterity.score %> / <%= stat.Dexterity.modifier %> <br/><br/>
-		Constitution: <%= stat.Constitution.score %> / <%= stat.Constitution.modifier %> <br/><br/>
-		Intelligence: <%= stat.Intelligence.score %> / <%= stat.Intelligence.modifier %> <br/><br/>
-		Wisdom: <%= stat.Wisdom.score %> / <%= stat.Wisdom.modifier %> <br/><br/>
-		Charisma: <%= stat.Charisma.score %> / <%= stat.Charisma.modifier %> <br/><br/>
-
-		You are a <%= race.race %>.<br/><br/>
-		With a bonus to <%= race.ability_score_bonus %>.<br/><br/>
-		You're a <%= race.size %> sized creature.<br/><br/>
-		You walk at a speed of <%= race.speed %> ft. per round.<br/><br/>
-		You have the following traits <%= race.traits %>.<br/><br/>
-		You speak these languages <%= race.languages %>.<br/><br/>
-		You're male name is<%= race.male_name %><%= race.clan_or_family_name %>.<br/><br/>
-		You're female name is<%= race.female_name %><%= race.clan_or_family_name %>.<br/><br/>
-
-		Your class is a <%= job.class %>.<br/><br/>
-		Your hit die is <%= job.hit_dice %>.<br/><br/>
-		You start with <%= parseInt(job.hp) + parseInt(stat.Constitution.modifier) %> hp.<br/><br/>
-		You can wear <%= job.armor_proficiencies %>.<br/><br/>
-		You can wield <%= job.weapon_proficiencies %>.<br/><br/>
-		You can use <%= job.tool_proficiencies %>.<br/><br/>
-		You have proficiencies at <%= job.saving_throws %>.<br/><br/>
-		You're good at the following skills <%= job.skills %>.<br/><br/>
-		You can only choose <%= job.choose_skills %> though.<br/><br/>
-		You start with<%= job.starting_equipment %>.<br/><br/>
-		You have these feats <%= job.features %>.<br/><br/>
-		You know <%= job.cantrips %> cantrips.<br/><br/>
-		You know or have prepared <%= job.spells_known_or_prepared %> spells.<br/><br/>
-		You have <%= job.spell_slots %> spell slots open per day.<br/><br/>
+		<a href="/basic">GIVE ME A CHARACTER!</a>
 	</p>
 </body>
 </html>

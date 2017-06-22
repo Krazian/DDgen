@@ -32,29 +32,33 @@ app.get("/basic",function(req,res){
 		db.all('SELECT * FROM classes ORDER BY RANDOM() LIMIT 1',function(err,job){
 			// GETS STATS FROM EXPORT MODULE
 			var stats = [];
-			debug("stop")
 			for (var i = 0; i < 7; i++){
 				var number = functions.getStats();
 				stats.push({score: number,modifier:functions.modifiers(number)});
+			}
+			stats.sort(function (a, b) {
+				if (a.score > b.score) {
+					return 1;
 				}
-				stats.sort(function (a, b) {
-					if (a.score > b.score) {
-						return 1;
-					}
-					if (a.score < b.score) {
-						return -1;
-					}
-					return 0;
-				}).shift();
+				if (a.score < b.score) {
+					return -1;
+				}
+				return 0;
+			}).shift();
 
 			// RANDOMLY ASSIGN STATS
 			var abilityScores = new attr(functions.shuffle(stats));
+
+			// Stats before racial bonues
+			console.log("Stats before mods:")
+			console.log(abilityScores)
 			race[0].ability_score_bonus.split(",").forEach(function(bonus){
 				var number = bonus.trim().split(" ")[0];
 				var stat = bonus.trim().split(" ")[1];
 				//ADDS RACIAL STAT BONUSES
 				switch (stat){
 					case "Strength":
+					debugger
 						abilityScores.Strength.score += parseInt(number, 10);
 						abilityScores.Strength.modifier = functions.modifiers(abilityScores.Strength.score);
 						break;
@@ -122,6 +126,11 @@ app.get("/basic",function(req,res){
 			});
 			job[0].starting_equipment = chosenGear;
 			job[0].skills = functions.pickSomething(job[0].choose_skills,job[0].skills,",");
+
+			// Race bonus
+			console.log("Your racial info:")
+			console.log(race[0])
+			// Job
 			console.log(job[0])
 			res.render("basic.ejs",{race:race[0],job:job[0],stat:abilityScores});
 		});

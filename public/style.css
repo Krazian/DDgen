@@ -1,6 +1,5 @@
 body{
-	font-family: 'Tulpen One', cursive;
-	font-size: 25px;
+
 	margin: auto 20px;
   padding: 0px;
  /* max-width: 670px;*/ /* width: 7in; */
@@ -11,38 +10,4 @@ body{
 
 h1, h2, h3, h4, h6{
 	font-family: 'Tulpen One', cursive;
-}
-
-.section{
-	padding:5px;
-	border-style: solid;
-	border-width: 2px;
-}
-
-.stats{
-	padding: 3px;
-}
-
-.score{
-	text-decoration: bold;
-}
-
-.mod{
-	font-style: italic; 
-}
-
-.skills{
-	font-size: 18px;
-}
-
-.weapon{
-	background-color: red;
-}
-
-#left-half{
-	text-align: left;
-}
-
-#right-half{
-	text-align: right; 
 }

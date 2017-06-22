@@ -11,109 +11,82 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<!-- Header Start-->
-	<div class="row section">
-		<h2 class="large-6 medium-6 small-6 columns" id="left-half"><%= race.male_name %><%= race.clan_or_family_name %></h2>
-		<div class="large-6 medium-6 small-6 columns">
-			<h4 class="large-12 medium-12 small-12 columns" id="right-half">
-				Level 1 <%= job.class %>  /  BACKGROUND  /  PLAYER NAME
-				<br/><%= race.race %>  /  ALIGNMENT  /  EXPERIENCE POINTS</h4>
-		</div>
+<div class="row">
+	<div class="large-12 columns">
+		<% var name = [race.female_name,race.male_name] %>
+		<h3>Your name is<%= name[Math.floor(1)] %><%= race.clan_or_family_name %></h3>
+		<p>You're a Level 1 <%= race.race %> <%= job.class %></p>
+		<p>Here are your stats:</p>
 	</div>
+</div>
+<div class="row">
+	<div class="large-4 columns">
+		<u>Ability Score</u>
+		<ul>
+			<li>Strength: <%=stat.Strength.score %> (<%=stat.Strength.modifier %>)</li>
+			<li>Dexterity: <%=stat.Dexterity.score %> (<%=stat.Dexterity.modifier %>)</li>
+			<li>Constitution: <%=stat.Constitution.score %> (<%=stat.Constitution.modifier %>)</li>
+			<li>Intelligence: <%=stat.Intelligence.score %> (<%=stat.Intelligence.modifier %>)</li>
+			<li>Wisdom: <%=stat.Wisdom.score %> (<%=stat.Wisdom.modifier %>)</li>
+			<li>Charisma: <%=stat.Charisma.score %> (<%=stat.Charisma.modifier %>)</li>
+		</ul>
+	</div>
+	<div class="large-4 columns">
+		<u>Saving Throw</u>
+		<ul>
+			<li>Strength: <%= stat.Strength.modifier %></li>
+			<li>Dexterity: <%= stat.Dexterity.modifier %></li>
+			<li>Constitution: <%= stat.Constitution.modifier %></li>
+			<li>Intelligence: <%= stat.Intelligence.modifier %></li>
+			<li>Wisdom: <%= stat.Wisdom.modifier %></li>
+			<li>Charisma: <%= stat.Charisma.modifier %></li>
+		</ul>
+	</div>
+	<div class="large-4 columns">
+		<u>Skills</u>
+		<% for(var i = 0; i < job.skills.length; i++){ %>
+			<% job.skills[i] = job.skills[i].trim() %>
+		<% } %>
+		<ul> 
+			<li>Acrobatics (Dex): <%= job.skills.indexOf("Acrobatics") !== -1 ? stat.Dexterity.modifier + 2 : stat.Dexterity.modifier %></li>
+			<li>Animal Handling (Wis): <%= job.skills.indexOf("Animal Handling") !== -1 ? stat.Wisdom.modifier + 2 : stat.Wisdom.modifier %></li>
+			<li>Arcana (Int): <%= job.skills.indexOf("Arcana") !== -1 ? stat.Intelligence.modifier + 2 : stat.Intelligence.modifier %></li>
+			<li>Atheltics (Str): <%= job.skills.indexOf("Atheltics") !== -1 ? stat.Strength.modifier + 2 : stat.Strength.modifier %></li>
+			<li>Deception (Cha): <%= job.skills.indexOf("Deception") !== -1 ? stat.Charisma.modifier + 2 : stat.Charisma.modifier %></li>
+			<li>History (Int): <%= job.skills.indexOf("History") !== -1 ? stat.Intelligence.modifier + 2 : stat.Intelligence.modifier %></li>
+			<li>Insight (Wis): <%= job.skills.indexOf("Insight") !== -1 ? stat.Wisdom.modifier + 2 : stat.Wisdom.modifier %></li>
+			<li>Intimidation (Cha): <%= job.skills.indexOf("Intimidation") !== -1 ? stat.Charisma.modifier + 2 : stat.Charisma.modifier %></li>
+			<li>Investigation (Int): <%= job.skills.indexOf("Investigation") !== -1 ? stat.Intelligence.modifier + 2 : stat.Intelligence.modifier %></li>
+			<li>Medicine (Wis): <%= job.skills.indexOf("Medicine") !== -1 ? stat.Wisdom.modifier + 2 : stat.Wisdom.modifier %></li>
+			<li>Nature (Int): <%= job.skills.indexOf("Nature") !== -1 ? stat.Intelligence.modifier + 2 : stat.Intelligence.modifier %></li>
+			<li>Perception (Wis): <%= job.skills.indexOf("Perception") !== -1 ? stat.Wisdom.modifier + 2 : stat.Wisdom.modifier %></li>
+			<li>Performace (Cha): <%= job.skills.indexOf("Performace") !== -1 ? stat.Charisma.modifier + 2 : stat.Charisma.modifier %></li>
+			<li>Persuasion (Cha): <%= job.skills.indexOf("Persuasion") !== -1 ? stat.Charisma.modifier + 2 : stat.Charisma.modifier %></li>
+			<li>Religion (Int): <%= job.skills.indexOf("Religion") !== -1 ? stat.Intelligence.modifier + 2 : stat.Intelligence.modifier %></li>
+			<li>Sleight of Hand (Dex): <%= job.skills.indexOf("Sleight of Hand") !== -1 ? stat.Dexterity.modifier + 2 : stat.Dexterity.modifier %></li>
+			<li>Stealth (Dex): <%= job.skills.indexOf("Stealth") !== -1 ? stat.Dexterity.modifier + 2 : stat.Dexterity.modifier %></li>
+			<li>Survival (Wis): <%= job.skills.indexOf("Survival") !== -1 ? stat.Wisdom.modifier + 2 : stat.Wisdom.modifier %></li>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="large-4 columns">
+		<p>
+			Proficiency Bonus: +2<br>
+			Initiative: <%= stat.Dexterity.modifier %><br>
+			Speed: <%= race.speed %>
+			<br><br>
+			Current Hit Points: <%= job.hp + stat.Constitution.modifier %><br>
+			Hit Dice: <%= job.hit_dice %>
+		</p>
 
-<br/>
-	<!-- Header End -->
-	<div class="row">
-	<!-- First Column Start -->
-		<div class="large-4 medium-4 small-4 row section" style="margin-right:16px">
-			<div class="large-5 medium-5 small-5 columns">
-				<div class="large-12 medium-12 small-12 columns stats section">
-					<p class="score">Strength<br/><%=stat.Strength.score %></p>
-					<p class="mod"><%=stat.Strength.modifier %></p>
-				</div><br/>
-				<div class="large-12 medium-12 small-12 columns stats section">
-					<p class="score">Dexterity<br/><%=stat.Dexterity.score %></p>
-					<p class="mod"><%=stat.Dexterity.modifier %></p>
-				</div><br/>
-				<div class="large-12 medium-12 small-12 columns stats section">
-					<p class="score">Constitution<br/><%=stat.Constitution.score %></p>
-					<p class="mod"><%=stat.Constitution.modifier %></p>
-				</div><br/>
-				<div class="large-12 medium-12 small-12 columns stats section">
-					<p class="score">Intelligence<br/><%=stat.Intelligence.score %></p>
-					<p class="mod"><%=stat.Intelligence.modifier %></p>
-				</div><br/>
-				<div class="large-12 medium-12 small-12 columns stats section">
-					<p class="score">Wisdom<br/><%=stat.Wisdom.score %></p>
-					<p class="mod"><%=stat.Wisdom.modifier %></p>
-				</div><br/>
-				<div class="large-12 medium-12 small-12 columns stats section">
-					<p class="score">Charisma<br/><%=stat.Charisma.score %></p>
-					<p class="mod"><%=stat.Charisma.modifier %></p>
-				</div>
-			</div>
-			<p class="large-7 medium-7 small-7 columns skills">
-				Inspiration <br/>
-				Proficiency Bonus
-				<br/><br/>
-				<input type="radio" name="Strength" value="Strength"> <u>  <%= stat.Strength.modifier %>  </u> Strength<br/>
-				<input type="radio" name="Dexterity" value="Dexterity"> <u>  <%= stat.Dexterity.modifier %>  </u> Dexterity<br/>
-				<input type="radio" name="Constitution" value="Constitution"> <u>  <%= stat.Constitution.modifier %>  </u> Constitution<br/>
-				<input type="radio" name="Intelligence" value="Intelligence"> <u>  <%= stat.Intelligence.modifier %>  </u> Intelligence<br/>
-				<input type="radio" name="Wisdom" value="Wisdom"> <u>  <%= stat.Wisdom.modifier %>  </u> Wisdom<br/>
-				<input type="radio" name="Charisma" value="Charisma"> <u>  <%= stat.Charisma.modifier %>  </u> Charisma
-				<br/><br/>
-				<input type="radio" name="Acrobatics" value="Acrobatics"> <u>  <%= stat.Dexterity.modifier %>  </u> Acrobatics (Dex)<br/>
-				<input type="radio" name="Animal Handling" value="Animal Handling"> <u>  <%= stat.Wisdom.modifier %>  </u> Animal Handling (Wis)<br/>
-				<input type="radio" name="Arcana" value="Arcana"> <u>  <%= stat.Intelligence.modifier %>  </u> Arcana (Int)<br/>
-				<input type="radio" name="Atheltics" value="Atheltics"> <u>  <%= stat.Strength.modifier %>  </u> Atheltics (Str)<br/>
-				<input type="radio" name="Deception" value="Deception"> <u>  <%= stat.Charisma.modifier %>  </u> Deception (Cha)<br/>
-				<input type="radio" name="History" value="History"> <u>  <%= stat.Intelligence.modifier %>  </u> History (Int)<br/>
-				<input type="radio" name="Insight" value="Insight"> <u>  <%= stat.Wisdom.modifier %>  </u> Insight (Wis)<br/>
-				<input type="radio" name="Intimidation" value="Intimidation"> <u>  <%= stat.Charisma.modifier %>  </u> Intimidation (Cha)<br/>
-				<input type="radio" name="Investigation" value="Investigation"> <u>  <%= stat.Intelligence.modifier %>  </u> Investigation (Int)<br/>
-				<input type="radio" name="Medicine" value="Medicine"> <u>  <%= stat.Wisdom.modifier %>  </u> Medicine (Wis)<br/>
-				<input type="radio" name="Nature" value="Nature"> <u>  <%= stat.Intelligence.modifier %>  </u> Nature (Int)<br/>
-				<input type="radio" name="Perception" value="Perception"> <u>  <%= stat.Wisdom.modifier %>  </u> Perception (Wis)<br/>
-				<input type="radio" name="Performace" value="Performace"> <u>  <%= stat.Charisma.modifier %>  </u> Performace (Cha)<br/>
-				<input type="radio" name="Persuasion" value="Persuasion"> <u>  <%= stat.Charisma.modifier %>  </u> Persuasion (Cha)<br/>
-				<input type="radio" name="Religion" value="Religion"> <u>  <%= stat.Intelligence.modifier %>  </u> Religion (Int)<br/>
-				<input type="radio" name="Sleight of Hand" value="Sleight of Hand"> <u>  <%= stat.Dexterity.modifier %>  </u> Sleight of Hand (Dex)<br/>
-				<input type="radio" name="Stealth" value="Stealth"> <u>  <%= stat.Dexterity.modifier %>  </u> Stealth (Dex)<br/>
-				<input type="radio" name="Survival" value="Survival"> <u>  <%= stat.Wisdom.modifier %>  </u> Survival (Wis)<br/>
-			</p>
-			<p class="large-12 medium-12 small-12 columns section">Passive Perception</p>
-			<p class="large-12 medium-12 small-12 columns section">Other Proficiences &amp; Languages</p>
-		</div>
-		<!-- First Column End -->
-		<!-- Second Column Start -->
-		<div class="large-4 medium-4 small-4 row section" style="margin-right:16px">
-			<p class="large-4 medium-4 small-4 columns section">Armor Class</p>
-			<p class="large-4 medium-4 small-4 columns section">Initiative<br> <%= stat.Dexterity.modifier %></p>
-			<p class="large-4 medium-4 small-4 columns section">Speed<br><%= race.speed %></p>
-			<p class="large-12 medium-12 small-12 columns section">Current Hit Points<br><%= job.hp + stat.Constitution.modifier %></p>
-			<p class="large-6 medium-6 small-6 columns section">Hit Dice<br><%= job.hit_dice %></p>
-			<p class="large-6 medium-6 small-6 columns section">
-				Successes <input type="radio"> <input type="radio"> <input type="radio"><br/>
-				Failures <input type="radio"> <input type="radio"> <input type="radio"><br/>
-				Death Saves</p>
-			<div class="large-12 medium-12 small-12 columns section">
-				Attacks &amp; Spellcasting
-			</div>
-			<div class="large-12 medium-12 small-12 columns section">
-				Equipment
-			</div>
-		</div>
-		<!-- Second Column End -->
-		<!-- Third Column Start -->
-		<div class="large-3 medium-3 small-3 row section" style="margin-right:16px">
-			<p class="large-12 medium-12 small-12 columns section">Personality Traits</p>
-			<p class="large-12 medium-12 small-12 columns section">Ideals</p>
-			<p class="large-12 medium-12 small-12 columns section">Bonds</p>
-			<p class="large-12 medium-12 small-12 columns section">Flaws</p>
-			<p class="large-12 medium-12 small-12 columns">Features &amp; Traits</p>
-		</div>
-		<!-- Third Column End -->
+		<p>
+			Traits: <%= race.traits %><br>
+			Armor Proficiencies: <%= job.armor_proficiencies %><br>
+			Weapon Proficiencies: <%= job.weapon_proficiencies %><br>
+			Tool Proficienies: <%= job.tool_proficiencies %>
+		</p>
+	</div>
 </div>
 	<script src="custom-f6/js/vendor/jquery.min.js"></script>
 	<script src="custom-f6/js/vendor/what-input.min.js"></script>
